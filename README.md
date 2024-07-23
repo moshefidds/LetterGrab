@@ -15,3 +15,4 @@ _**Attention Fun Lovers:**_
 ## The Winner:
 - The player who fills the most spots is the winner of this game.
 
+![image](https://github.com/user-attachments/assets/199b820d-ed59-4f3e-ba17-2a6c6f2f6738)
