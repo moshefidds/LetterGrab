@@ -6,6 +6,15 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Letters_35762.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Letters_35762.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="gnuciDictionary" Version="0.0.9" />
+  </ItemGroup>
 
 </Project>
