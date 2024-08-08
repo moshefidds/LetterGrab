@@ -612,7 +612,7 @@ namespace LetterGrabApp
             lstalltextboxes.Where(lat => !lstanyacquired.Contains(lat)).ToList().ForEach(newinput => newinput.ResetText());
             ResetFields(reseterrorstatus);
         }
-
+//AS Move event handler down below procedures.
         // BtnSubmit_Click
         private void BtnSubmit_Click(object? sender, EventArgs e)
         {
@@ -707,6 +707,7 @@ namespace LetterGrabApp
         // ActiveForm_KeyDown
         private void ActiveForm_KeyDown(object? sender, KeyEventArgs e)
         {
+//AS Code should be moved out of event handler into a procedure and called from here.
             var currentfocus = this.ActiveControl;
             if (currentfocus is TextBox currenttextbox)
             {

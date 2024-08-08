@@ -318,7 +318,7 @@
             // 
             btnNewGame.BackColor = Color.DarkCyan;
             btnNewGame.Dock = DockStyle.Fill;
-            btnNewGame.Font = new Font("Segoe UI Variable Text", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnNewGame.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnNewGame.ForeColor = Color.Ivory;
             btnNewGame.Location = new Point(14, 148);
             btnNewGame.Name = "btnNewGame";
@@ -331,7 +331,7 @@
             // 
             btnNewSession.BackColor = Color.MediumTurquoise;
             btnNewSession.Dock = DockStyle.Fill;
-            btnNewSession.Font = new Font("Segoe UI Variable Text", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnNewSession.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnNewSession.ForeColor = Color.Ivory;
             btnNewSession.Location = new Point(243, 148);
             btnNewSession.Name = "btnNewSession";
@@ -344,7 +344,7 @@
             // 
             btnForGoTurn.BackColor = Color.DarkViolet;
             btnForGoTurn.Dock = DockStyle.Fill;
-            btnForGoTurn.Font = new Font("Segoe UI Variable Text", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnForGoTurn.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnForGoTurn.ForeColor = Color.Ivory;
             btnForGoTurn.Location = new Point(16, 842);
             btnForGoTurn.Margin = new Padding(5);
@@ -358,7 +358,7 @@
             // 
             btnRefreshInput.BackColor = Color.Olive;
             btnRefreshInput.Dock = DockStyle.Fill;
-            btnRefreshInput.Font = new Font("Segoe UI Variable Text", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnRefreshInput.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnRefreshInput.ForeColor = Color.Ivory;
             btnRefreshInput.Location = new Point(245, 842);
             btnRefreshInput.Margin = new Padding(5);
@@ -372,7 +372,7 @@
             // 
             btnSubmit.BackColor = Color.LimeGreen;
             btnSubmit.Dock = DockStyle.Fill;
-            btnSubmit.Font = new Font("Segoe UI Variable Text", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSubmit.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point);
             btnSubmit.ForeColor = Color.Ivory;
             btnSubmit.Location = new Point(474, 842);
             btnSubmit.Margin = new Padding(5);
@@ -2869,7 +2869,7 @@
             // 
             btnRules.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnRules.BackColor = Color.Wheat;
-            btnRules.Font = new Font("Segoe UI Variable Display", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRules.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             btnRules.Location = new Point(593, 148);
             btnRules.Name = "btnRules";
             btnRules.Size = new Size(106, 35);
