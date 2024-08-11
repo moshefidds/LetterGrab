@@ -365,12 +365,19 @@ namespace LetterGrabApp
                 UndoInput(false);
             }
             // if word doesn't exist
-// MF Tried .Equals - Alwase returning false???
-            else if (!lstword.Exists(lw => lw.Value.Contains(word)))
+            // MF Tried .Equals - Alwase returning false???
+            else if
+            (!lstword.Exists(lw => lw.Value.Equals(word, StringComparison.OrdinalIgnoreCase)))
             {
                 errorstatus = errors.WordNoExist;
                 UndoInput(false);
             }
+
+            //else if (!lstword.Exists(lw => lw.Value.Contains(word)))
+            //{
+            //    errorstatus = errors.WordNoExist;
+            //    UndoInput(false);
+            //}
             // if word already inputted
             else if (lsttakenwords.Exists(ltw => ltw.Equals(word)))
             {
