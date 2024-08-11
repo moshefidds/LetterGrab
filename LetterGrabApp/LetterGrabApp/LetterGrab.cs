@@ -83,7 +83,7 @@ namespace LetterGrabApp
         {
             InitializeComponent();
 
-            lstword.ForEach(lw => lw.Value.ToLower());
+            lstword.ForEach(lw => lw.Value.ToLower().Trim());
 
             lstalltextboxes = new()
             {
@@ -98,11 +98,6 @@ namespace LetterGrabApp
                 txtboxR8C0D00, txtboxR8C1D01, txtboxR8C2D02, txtboxR8C3D03, txtboxR8C4D04, txtboxR8C5D05, txtboxR8C6D06, txtboxR8C7D07, txtboxR8C8D08, txtboxR8C9D09,
                 txtboxR9C0Dn,  txtboxR9C1D00, txtboxR9C2D01, txtboxR9C3D02, txtboxR9C4D03, txtboxR9C5D04, txtboxR9C6D05, txtboxR9C7D06, txtboxR9C8D07, txtboxR9C9D08
             };
-            //MF - would have liked to use the below foreach instead of above, however the list wasn't being created sequentially?
-            //foreach (TextBox tb in tblLetters.Controls)
-            //{
-            //    lstalltextboxes.Add(tb);
-            //}
 
             lstrow0 = new();
             lstrow0.AddRange(CreateSetList("R0").ToList());
@@ -370,13 +365,14 @@ namespace LetterGrabApp
                 UndoInput(false);
             }
             // if word doesn't exist
+// MF Tried .Equals - Alwase returning false???
             else if (!lstword.Exists(lw => lw.Value.Contains(word)))
             {
                 errorstatus = errors.WordNoExist;
                 UndoInput(false);
             }
             // if word already inputted
-            else if (lsttakenwords.Exists(lw => lw.Contains(word)))
+            else if (lsttakenwords.Exists(ltw => ltw.Equals(word)))
             {
                 errorstatus = errors.WordAlreadyUsed;
                 UndoInput(false);
@@ -570,6 +566,7 @@ namespace LetterGrabApp
                 DetermineWinner();
                 DisplayMessage();
                 btnNewSession.Text = "New Session";
+                btnNewGame.Enabled = false;
             }
             else
             {
@@ -577,6 +574,7 @@ namespace LetterGrabApp
                 SetAllForPlaying();
                 DisplayMessage();
                 btnNewSession.Text = "End Session";
+                btnNewGame.Enabled = true;
             }
         }
 
@@ -612,16 +610,6 @@ namespace LetterGrabApp
             lstalltextboxes.Where(lat => !lstanyacquired.Contains(lat)).ToList().ForEach(newinput => newinput.ResetText());
             ResetFields(reseterrorstatus);
         }
-//AS Move event handler down below procedures.
-        // BtnSubmit_Click
-        private void BtnSubmit_Click(object? sender, EventArgs e)
-        {
-            BuildWordAndScore();
-            SwitchPlayer();
-            DisplayMessage();
-            ResetFields();
-            DetermineIfAllTaken();
-        }
 
         // ShowRules
         private void ShowRules()
@@ -644,6 +632,64 @@ namespace LetterGrabApp
                     lstinputted[nextbox].Focus();
                 }
             }
+        }
+
+        // DoKeyDown
+        private void DoKeyDown(object? sender, KeyEventArgs e)
+        {
+            var currentfocus = this.ActiveControl;
+            if (currentfocus is TextBox currenttextbox)
+            {
+                List<TextBox> lstcurrentrow = new();
+                List<TextBox> lstcurrentcolumn = new();
+                lstcurrentrow.AddRange(lstallsets.GetRange(0, 10).ToList().First(las => las.Contains(currentfocus)));
+                lstcurrentcolumn.AddRange(lstallsets.GetRange(10, 10).ToList().First(las => las.Contains(currentfocus)));
+
+                int rowbox = lstcurrentrow.IndexOf(currenttextbox);
+                int columnbox = lstcurrentcolumn.IndexOf(currenttextbox);
+
+                switch (e.KeyCode)
+                {
+                    case Keys.Left:
+                        if (rowbox - 1 > -1)
+                        {
+                            lstcurrentrow[rowbox - 1].Focus();
+                        }
+                        break;
+                    case Keys.Right:
+                        if (rowbox + 1 < 10)
+                        {
+                            lstcurrentrow[rowbox + 1].Focus();
+                        }
+                        break;
+                    case Keys.Up:
+                        if (columnbox - 1 > -1)
+                        {
+                            lstcurrentcolumn[columnbox - 1].Focus();
+                        }
+                        break;
+                    case Keys.Down:
+                        if (columnbox + 1 < 10)
+                        {
+                            lstcurrentcolumn[columnbox + 1].Focus();
+                        }
+                        break;
+                    case Keys.Enter:
+                        BtnSubmit_Click(sender, e);
+                        break;
+                }
+            }
+        }
+
+        //AS Move event handler down below procedures.
+        // BtnSubmit_Click
+        private void BtnSubmit_Click(object? sender, EventArgs e)
+        {
+            BuildWordAndScore();
+            SwitchPlayer();
+            DisplayMessage();
+            ResetFields();
+            DetermineIfAllTaken();
         }
 
         private void BtnNewSession_Click(object? sender, EventArgs e)
@@ -707,49 +753,8 @@ namespace LetterGrabApp
         // ActiveForm_KeyDown
         private void ActiveForm_KeyDown(object? sender, KeyEventArgs e)
         {
-//AS Code should be moved out of event handler into a procedure and called from here.
-            var currentfocus = this.ActiveControl;
-            if (currentfocus is TextBox currenttextbox)
-            {
-                List<TextBox> lstcurrentrow = new();
-                List<TextBox> lstcurrentcolumn = new();
-                lstcurrentrow.AddRange(lstallsets.GetRange(0, 10).ToList().First(las => las.Contains(currentfocus)));
-                lstcurrentcolumn.AddRange(lstallsets.GetRange(10, 10).ToList().First(las => las.Contains(currentfocus)));
-
-                int rowbox = lstcurrentrow.IndexOf(currenttextbox);
-                int columnbox = lstcurrentcolumn.IndexOf(currenttextbox);
-
-                switch (e.KeyCode)
-                {
-                    case Keys.Left:
-                        if (rowbox - 1 > -1)
-                        {
-                            lstcurrentrow[rowbox - 1].Focus();
-                        }
-                        break;
-                    case Keys.Right:
-                        if (rowbox + 1 < 10)
-                        {
-                            lstcurrentrow[rowbox + 1].Focus();
-                        }
-                        break;
-                    case Keys.Up:
-                        if (columnbox - 1 > -1)
-                        {
-                            lstcurrentcolumn[columnbox - 1].Focus();
-                        }
-                        break;
-                    case Keys.Down:
-                        if (columnbox + 1 < 10)
-                        {
-                            lstcurrentcolumn[columnbox + 1].Focus();
-                        }
-                        break;
-                    case Keys.Enter:
-                        BtnSubmit_Click(sender, e);
-                        break;
-                }
-            }
+            //AS Code should be moved out of event handler into a procedure and called from here.
+            DoKeyDown(sender, e);
         }
     }
 }
