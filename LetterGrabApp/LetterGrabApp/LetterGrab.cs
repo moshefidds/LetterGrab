@@ -688,8 +688,6 @@ namespace LetterGrabApp
             }
         }
 
-        //AS Move event handler down below procedures.
-        // BtnSubmit_Click
         private void BtnSubmit_Click(object? sender, EventArgs e)
         {
             BuildWordAndScore();
@@ -760,7 +758,6 @@ namespace LetterGrabApp
         // ActiveForm_KeyDown
         private void ActiveForm_KeyDown(object? sender, KeyEventArgs e)
         {
-            //AS Code should be moved out of event handler into a procedure and called from here.
             DoKeyDown(sender, e);
         }
     }
