@@ -17,4 +17,4 @@ _**Attention Fun Lovers:**_
 
 ![image](https://github.com/user-attachments/assets/199b820d-ed59-4f3e-ba17-2a6c6f2f6738)
 
-## [Download]([https://github.com/moshefidds/LetterGrab/blob/main/Docs/LetterGrab.exe](https://github.com/moshefidds/LetterGrab/releases/download/v1.0.0/LetterGrab.exe))
+## [Download Game]([https://github.com/moshefidds/LetterGrab/blob/main/Docs/LetterGrab.exe](https://github.com/moshefidds/LetterGrab/releases/download/v1.0.0/LetterGrab.exe))
